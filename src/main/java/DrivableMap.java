@@ -10,6 +10,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class DrivableMap {
     HashMap<String, Drivable> drivable_map;
@@ -55,8 +56,8 @@ class DrivableMap {
      * @return {@link List} of {@link Tradable} items in this {@link DrivableMap}
      */
     public List<Tradable> getTradable() {
-        return drivable_map.values().parallelStream()
-            .filter(x -> x instanceof Tradable).map(x -> (Tradable) x).toList();
+        return drivable_map.values().stream()
+            .filter(x -> x instanceof Tradable).map(x -> (Tradable) x).collect(Collectors.toList());
     }
 
     
